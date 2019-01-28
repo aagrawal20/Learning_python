@@ -101,6 +101,8 @@ def flappy_bird(x, y, image):
 
 # Game starts here
 def main():
+    global total_score
+    total_score = 0
     x = 150
     y = 200
     y_move = 0
@@ -166,8 +168,7 @@ def main():
 
         if x_block < (x - block_width) < x_block + block_move:
             current_score += 1
-        
-        global total_score
+   
         total_score = current_score
         pygame.display.update()
         clock.tick(100)
