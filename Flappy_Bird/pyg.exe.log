@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "pyg.py", line 22, in <module>
+  File "runpy.pyc", line 239, in run_path
+  File "runpy.pyc", line 215, in _get_code_from_file
+IOError: [Errno 2] No such file or directory: 'my_awesome_game.py'
+Traceback (most recent call last):
+  File "pyg.py", line 22, in <module>
+  File "runpy.pyc", line 240, in run_path
+  File "runpy.pyc", line 82, in _run_module_code
+  File "runpy.pyc", line 72, in _run_code
+  File "game.py", line 176, in <module>
+    main()
+  File "game.py", line 159, in main
+    game_over()
+  File "game.py", line 94, in game_over
+    msg_surface('Crash Alert!')
+  File "game.py", line 86, in msg_surface
+    while replay_or_quit() is None:
+  File "game.py", line 48, in replay_or_quit
+    quit()
+NameError: global name 'quit' is not defined
