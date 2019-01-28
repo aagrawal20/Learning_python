@@ -19,7 +19,7 @@ imgSize = img.get_size()
 
 def blocks(x_block, y_block, block_width, block_height, gap):
     pygame.draw.rect(surface, white, [x_block, y_block, block_width, block_height])
-    pygame.draw.rect(surface, white, [x_block, y_block + block_height + gap, block_width, block_height])
+    pygame.draw.rect(surface, white, [x_block, y_block + block_height + gap, block_width, surfaceHeight])
 
 
 def replay_or_quit():
@@ -85,9 +85,9 @@ def main():
     y_block = 0
 
     block_width = 75
-    block_height = random.randint(0, (surfaceWidth/2))
+    block_height = random.randint(0, int(surfaceHeight / 2))
     gap = imgSize[1] * 3
-    block_move = 3
+    block_move = 6
 
     game_over = False
 
@@ -98,11 +98,11 @@ def main():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    y_move = -5
+                    y_move = -3
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
-                    y_move = 5
+                    y_move = 3
 
         y += y_move
 
@@ -115,12 +115,26 @@ def main():
         if y > surfaceHeight-40 or y < -5:
             gameOver()
 
+        # generate continuous blocks
         if x_block < (-1 * block_width):
             x_block = surfaceWidth
-            block_height = random.randint(0, (surfaceWidth/2))
+            block_height = random.randint(0, (surfaceHeight/2))
+
+        # obstacle logic for the upper block
+        if x + imgSize[0] > x_block:
+            if x < x_block + block_width:
+                if y < block_height:
+                    if x - imgSize[0] < block_width + x_block:
+                        gameOver()
+
+        # obstacle logic for the lower block
+        if x + imgSize[0] > x_block:
+            if y + imgSize[1] > block_height + gap:
+                if x < block_width + x_block:
+                    gameOver()
 
         pygame.display.update()
-        clock.tick(1000)
+        clock.tick(100)
 
 
 main()
