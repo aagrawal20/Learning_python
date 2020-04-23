@@ -1,7 +1,4 @@
-# Learning_python
-I am trying to learn complete python and all advanced techniques. I will post all small projects I complete in this repository.
-
-## 1. Flappy Bird Clone
+## Flappy Bird Clone
 This is a clone of the flappy bird game. It is built using pygame library in python. This game includes obstacles and simple up arrow to control the birdy.
 
 ![](Flappy_Bird/screenshot2.PNG)
